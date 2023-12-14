@@ -25,10 +25,8 @@ public class Postac {
             postacImg = ImageIO.read(getClass().getResourceAsStream("/resources/spongebob.png"));
         }catch(IOException e) {
             e.printStackTrace();
-
         }
     }
-
     public void update() {
         if (keyHandler.wLewo==true) {
             x -= przesuniecie;
@@ -38,11 +36,9 @@ public class Postac {
         }
     }
     public void draw(Graphics2D g2) {
-        //g2.setColor(Color.BLACK);
-        //g2.fillRect(x,y,50,50);
         BufferedImage image = null;
         image = postacImg;
-        g2.drawImage(image,x,y, 50, 50,null);
+        g2.drawImage(image,x,y, 100, 100,null);
     }
 
 }

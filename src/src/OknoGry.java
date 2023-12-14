@@ -1,6 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class OknoGry extends JPanel implements Runnable {
 
@@ -9,6 +12,7 @@ public class OknoGry extends JPanel implements Runnable {
     Thread thread;
     KeyHandler keyHandler = new KeyHandler();
     Postac postac = new Postac(this,keyHandler);
+    BufferedImage tlo;
 
     public OknoGry () {
         this.setPreferredSize(new Dimension(1000,600));
@@ -16,6 +20,16 @@ public class OknoGry extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler); //dodaje KeyListener do panela - obiekt klasy KeyHandler
         this.setFocusable(true);
+        getTloImg();
+    }
+
+    public void getTloImg () {
+        try {
+
+            tlo = ImageIO.read(getClass().getResourceAsStream("/resources/tlo_gra.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void startThread () {
@@ -49,6 +63,7 @@ public class OknoGry extends JPanel implements Runnable {
     public void paintComponent(Graphics  g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        g2.drawImage(tlo,0,0,1000,600,null);
         postac.draw(g2);
         g2.dispose();
     }
