@@ -11,11 +11,13 @@ import java.io.IOException;
 public class OknoStartowe extends JPanel {
 
     BufferedImage tlo;
-    //Icon icon = new ImageIcon("/resources/R.png");
+
     JButton start = new JButton("S T A R T");
+    JButton proba = new JButton("Proba");
     Color color;
 
     OknoStartowe () {
+
         //////////
         setSize(1000, 600);
         this.setDoubleBuffered(true);
@@ -36,8 +38,11 @@ public class OknoStartowe extends JPanel {
                 listaPoziomów.setVisible(true);
             }
         });
+
         this.add(start);
         start.setVisible(true);
+        //start.setRolloverEnabled(true);
+        //this.setComponentZOrder(start, 0);
         setVisible(true);
     }
 
@@ -51,10 +56,14 @@ public class OknoStartowe extends JPanel {
     }
 
     public void paintComponent(Graphics  g) {
-        this.add(start);
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(tlo,0,0,1000,600,null);
+        /*GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        this.add(start, gbc);*/
         g2.setColor(color);
         BasicStroke grubaLinia = new BasicStroke(4.0f);
         g2.setStroke(grubaLinia);
