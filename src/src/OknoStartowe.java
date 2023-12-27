@@ -15,6 +15,7 @@ public class OknoStartowe extends JPanel {
     JButton start = new JButton("S T A R T");
     JButton proba = new JButton("Proba");
     Color color;
+    KeyHandler keyHandler = new KeyHandler();
 
     OknoStartowe () {
 
@@ -24,11 +25,17 @@ public class OknoStartowe extends JPanel {
         setLayout(null);
         /////////
         getImg();
-        start.setBounds(440,320,120,50);
         color = new Color(177,162,202);
+        //repaint();
+        start.setBounds(440,320,120,50);
         start.setBackground(color);
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         start.setCursor(cursor);
+        start.setVisible(true);
+        this.add(start);
+
+        this.addKeyListener(keyHandler); //dodaje KeyListener do panela - obiekt klasy KeyHandler
+        this.setFocusable(true);
 
         start.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
@@ -39,11 +46,11 @@ public class OknoStartowe extends JPanel {
             }
         });
 
-        this.add(start);
-        start.setVisible(true);
+
         //start.setRolloverEnabled(true);
         //this.setComponentZOrder(start, 0);
         setVisible(true);
+
     }
 
     public void getImg () {
@@ -68,9 +75,9 @@ public class OknoStartowe extends JPanel {
         BasicStroke grubaLinia = new BasicStroke(4.0f);
         g2.setStroke(grubaLinia);
         g2.drawRect(425,310,150,70);
-        g2.dispose();
-    }
+        //g2.dispose();
 
+    }
 
 }
 

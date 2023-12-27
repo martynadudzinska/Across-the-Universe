@@ -1,44 +1,61 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Postac {
+public class Postac  {
 
-    int x=100;
-    int y=100;
+    static public boolean wLewo, wPrawo;
+    static public int x=100;
+    static public int y=450;
     int przesuniecie=4;
-    public BufferedImage postacImg;
+    public BufferedImage postacImg1, postacImg2;
+    static public BufferedImage imagePostac;
     OknoGry oknoGry;
     KeyHandler keyHandler;
 
-    public Postac (OknoGry oknoGry, KeyHandler keyHandler) {
+    public Postac (OknoGry oknoGry) {
         this.oknoGry=oknoGry;
-        this.keyHandler = keyHandler;
 
         getPostacImg();
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+
     }
 
     public void getPostacImg () {
         try {
 
-            postacImg = ImageIO.read(getClass().getResourceAsStream("/resources/spongebob.png"));
+            postacImg1 = ImageIO.read(getClass().getResourceAsStream("/resources/spongebob.png"));
+            postacImg2 = ImageIO.read(getClass().getResourceAsStream("/resources/spongebob2.png"));
+
+
         }catch(IOException e) {
             e.printStackTrace();
         }
     }
     public void update() {
-        if (keyHandler.wLewo==true) {
-            x -= przesuniecie;
 
-        } else if (keyHandler.wPrawo==true) {
+        if (wLewo) {
+            x -= przesuniecie;
+            System.out.println("PRZESUNIECEI");
+            imagePostac = postacImg2;
+        } else if (wPrawo) {
             x += przesuniecie;
+            System.out.println("przesunieciee");
+            imagePostac = postacImg1;
         }
+
     }
-    public void draw(Graphics2D g2) {
-        BufferedImage image = null;
-        image = postacImg;
-        g2.drawImage(image,x,y, 100, 100,null);
-    }
+    /*public void paintComponent(Graphics2D g2) {
+
+        //image = postacImg;
+        g2.drawImage(imagePostac,x,y, 100, 100,null);
+    }*/
+
+
+
 
 }

@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -18,6 +20,7 @@ public class ListaPoziomów extends JPanel {
     Color color2;
     Color color3;
     ListaPoziomów (boolean z1, boolean z2, boolean z3) {
+
         setSize(1000, 600);
         this.setDoubleBuffered(true);
         setLayout(null);
@@ -31,6 +34,16 @@ public class ListaPoziomów extends JPanel {
         start1.setCursor(cursor); //start2.setCursor(cursor); start3.setCursor(cursor);
         this.add(start1); this.add(start2); this.add(start3);
         start1.setVisible(true); start2.setVisible(true); start3.setVisible(true);
+        start1.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                setVisible(false);
+                //OknoGry oknogry = new OknoGry();
+                Poziom1 poziom1 = new Poziom1();
+                Main.okno.add(poziom1);
+                poziom1.setVisible(true);
+                poziom1.startThread();
+            }
+        });
         color2 = new Color(190,190,190);
         color3 = new Color(190,190,190);
         setVisible(true);
@@ -62,6 +75,6 @@ public class ListaPoziomów extends JPanel {
         g2.drawRect(425,350,150,70);
         g2.setColor(color3);
         g2.drawRect(695,350,150,70);
-        g2.dispose();
+        //g2.dispose();
     }
 }

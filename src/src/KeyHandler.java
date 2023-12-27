@@ -11,6 +11,7 @@ public class KeyHandler implements KeyListener {
         int klawisz = e.getKeyCode();
         if (klawisz == KeyEvent.VK_A) {
             wLewo = true;
+
         }
         if (klawisz == KeyEvent.VK_D) {
             wPrawo = true;
@@ -21,9 +22,12 @@ public class KeyHandler implements KeyListener {
         int klawisz = e.getKeyCode();
         if (klawisz == KeyEvent.VK_A) {
             wLewo = false;
+            System.out.println("AAAA");
         }
         if (klawisz == KeyEvent.VK_D) {
             wPrawo = false;
+            System.out.println("DDDD");
+
         }
     }
 }
