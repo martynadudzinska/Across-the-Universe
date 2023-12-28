@@ -12,7 +12,7 @@ class Okno extends JFrame implements KeyListener {
         setResizable(false);
         setTitle("Across the Universe");
         pack();
-        setSize(1000,600); //1280, 800
+        setSize(1000,650); //1280, 800
         setLocationRelativeTo(null);
         setVisible(true);
         setFocusable(true);
@@ -32,6 +32,12 @@ class Okno extends JFrame implements KeyListener {
         if (klawisz == KeyEvent.VK_D) {
             Postac.wPrawo = true;
         }
+        if (klawisz == KeyEvent.VK_W) {
+            Postac.wGore = true;
+        }
+        if (klawisz == KeyEvent.VK_S) {
+            Postac.wDol = true;
+        }
     }
 
     @Override
@@ -44,6 +50,12 @@ class Okno extends JFrame implements KeyListener {
         if (klawisz == KeyEvent.VK_D) {
             Postac.wPrawo = false;
 
+        }
+        if (klawisz == KeyEvent.VK_W) {
+            Postac.wGore = false;
+        }
+        if (klawisz == KeyEvent.VK_S) {
+            Postac.wDol = false;
         }
     }
 }

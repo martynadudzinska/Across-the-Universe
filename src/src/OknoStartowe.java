@@ -27,7 +27,7 @@ public class OknoStartowe extends JPanel {
         getImg();
         color = new Color(177,162,202);
         //repaint();
-        start.setBounds(440,320,120,50);
+        start.setBounds(440,360,120,50);
         start.setBackground(color);
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         start.setCursor(cursor);
@@ -65,7 +65,7 @@ public class OknoStartowe extends JPanel {
     public void paintComponent(Graphics  g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(tlo,0,0,1000,600,null);
+        g2.drawImage(tlo,0,0,1000,650,null);
         /*GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
@@ -74,7 +74,7 @@ public class OknoStartowe extends JPanel {
         g2.setColor(color);
         BasicStroke grubaLinia = new BasicStroke(4.0f);
         g2.setStroke(grubaLinia);
-        g2.drawRect(425,310,150,70);
+        g2.drawRect(425,350,150,70);
         //g2.dispose();
 
     }

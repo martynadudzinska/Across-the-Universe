@@ -5,15 +5,18 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+
 public class OknoGry extends JPanel implements Runnable {
 
-    int FPS = 60;
+    int FPS = 70;
     Thread thread;
     //KeyHandler keyHandler = new KeyHandler();
-    Postac postac = new Postac(this);
+    Postac postac;
     BufferedImage tlo, platform1, platform2, platform3, platform4, platform5, menu, ksiazka;
     JPanel jPanel;
+    //static public Rectangle rect;
     public OknoGry () {
+        postac = new Postac(this);
         this.setPreferredSize(new Dimension(1000,600));
         Color color = new Color(177,162,202);
         this.setBackground(color);
@@ -22,15 +25,31 @@ public class OknoGry extends JPanel implements Runnable {
         //setFocusable(true);
         this.requestFocus();
         getImg();
-        //setLayout(new BorderLayout());
+        setLayout(null);
         ImageIcon przyciskMenu = new ImageIcon(menu);
-        JButton menuBtn = new JButton("M E N U");
-        menuBtn.setBounds(0,0,140,47);
+        ImageIcon przyciskSlownik = new ImageIcon(ksiazka);
+        JButton menuBtn = new JButton(przyciskMenu);
+        menuBtn.setBackground(color);
+        JButton slownikBtn = new JButton(przyciskSlownik);
+        slownikBtn.setBackground(color);
+        menuBtn.setBounds(20,2,140,47);
+        slownikBtn.setBounds(170,0,60,50);
         this.add(menuBtn/*,BorderLayout.NORTH*/);
+        this.add(slownikBtn/*,BorderLayout.NORTH*/);
         //jPanel = new JPanel();
         //this.add(jPanel, BorderLayout.SOUTH);
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         menuBtn.setCursor(cursor);
+        slownikBtn.setCursor(cursor);
+        JLabel punkty = new JLabel("WYNIK/SCORE : 0/5");
+        punkty.setFont(new Font("Helvetica", Font.BOLD, 20));
+        punkty.setBounds(300,0,200,50);
+        JLabel napisPoziom = new JLabel("Poziom: 1");
+        napisPoziom.setFont(new Font("Helvetica", Font.BOLD, 20));
+        napisPoziom.setBounds(600,0,200,50);
+        this.add(punkty);
+        this.add(napisPoziom);
+        //rect = new Rectangle(Postac.x,Postac.y+5,100,88);
     }
 
     public void getImg () {
@@ -40,7 +59,7 @@ public class OknoGry extends JPanel implements Runnable {
             platform1 = ImageIO.read(getClass().getResourceAsStream("/resources/platform.png"));
             menu = ImageIO.read(getClass().getResourceAsStream("/resources/menu.bmp"));
 
-            ksiazka = ImageIO.read(getClass().getResourceAsStream("/resources/ksiazka.png"));
+            ksiazka = ImageIO.read(getClass().getResourceAsStream("/resources/ksiazka2.bmp"));
             platform2 = platform1; platform3 = platform1; platform4 = platform1; platform5 = platform1;
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,25 +89,28 @@ public class OknoGry extends JPanel implements Runnable {
 
             if (delta >= 1) {
                 update();
-                /*this.jPanel.*/repaint();  //wywoluje paintComponent()
+                repaint();  //wywoluje paintComponent()
                 delta --;
             }
         }
     }
     public void update() {
         postac.update();
-
+        //rect = new Rectangle(Postac.x,Postac.y+5,100,88);
+        System.out.println("x: " + Postac.x + "  y: "+Postac.y);
     }
     public void paintComponent(Graphics  g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(tlo,0,0,1000,600,null);
-        g2.drawImage(platform1,0,400,200,25,null);
-        g2.drawImage(platform2,30,100,200,25,null);
-        g2.drawImage(platform3,300,250,200,25,null);
-        g2.drawImage(platform4,600,350,200,25,null);
-        g2.drawImage(platform5,800,150,200,25,null);
+        g2.drawImage(tlo,0,50,1000,600,null);
         g2.drawImage(Postac.imagePostac,Postac.x,Postac.y, 100, 100,null);
+        g2.drawImage(platform1,0,450,200,25,null);
+        g2.drawImage(platform2,30,150,200,25,null);
+        g2.drawImage(platform3,300,300,200,25,null);
+        g2.drawImage(platform4,600,400,200,25,null);
+        g2.drawImage(platform5,800,200,200,25,null);
+        //g2.drawRect(rect.x, rect.y, rect.width, rect.height);
+        //g2.drawImage(ksiazka,170,0, 60, 50,null);
         //g2.dispose();
     }
 }

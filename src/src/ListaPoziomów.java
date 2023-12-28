@@ -63,7 +63,7 @@ public class ListaPoziomów extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(tlo,0,0,1000,600,null);
+        g2.drawImage(tlo,0,0,1000,650,null);
         g2.drawImage(poz1,150,140,157,190,null);
         g2.drawImage(poz2,430,140,157,190,null);
         g2.drawImage(poz3,680,140,190,190,null);
