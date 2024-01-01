@@ -2,6 +2,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -13,6 +15,7 @@ public class OknoGry extends JPanel implements Runnable {
     //KeyHandler keyHandler = new KeyHandler();
     Postac postac;
     BufferedImage tlo, platform1, platform2, platform3, platform4, platform5, menu, ksiazka;
+    Slownik slownik;
     JPanel jPanel;
     //static public Rectangle rect;
     public OknoGry () {
@@ -41,6 +44,14 @@ public class OknoGry extends JPanel implements Runnable {
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         menuBtn.setCursor(cursor);
         slownikBtn.setCursor(cursor);
+
+        slownikBtn.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                slownik = new Slownik(1);
+            }
+        });
+
+
         JLabel punkty = new JLabel("WYNIK/SCORE : 0/5");
         punkty.setFont(new Font("Helvetica", Font.BOLD, 20));
         punkty.setBounds(300,0,200,50);
@@ -96,8 +107,14 @@ public class OknoGry extends JPanel implements Runnable {
     }
     public void update() {
         postac.update();
+        if(slownik !=null) {
+            
+            if (slownik.widoczny) {
+                System.out.println("WIDOCZNYY");
+            } else System.out.println("NIE WIDOCZNY");
+        }
         //rect = new Rectangle(Postac.x,Postac.y+5,100,88);
-        System.out.println("x: " + Postac.x + "  y: "+Postac.y);
+
     }
     public void paintComponent(Graphics  g) {
         super.paintComponent(g);

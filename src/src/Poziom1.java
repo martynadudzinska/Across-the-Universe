@@ -31,11 +31,11 @@ public class Poziom1 extends OknoGry {
     public void paintComponent(Graphics  g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(ananas,0,350,100,100,null);
-        g2.drawImage(lizak,30,50,100,100,null);
-        g2.drawImage(majonez,300,200,100,100,null);
-        g2.drawImage(pizza,600,300,100,100,null);
-        g2.drawImage(zupa,800,100,100,100,null);
+        g2.drawImage(ananas,0,360,100,100,null);
+        g2.drawImage(lizak,30,80,70,70,null);
+        g2.drawImage(majonez,330,210,100,100,null);
+        g2.drawImage(pizza,660,310,100,100,null);
+        g2.drawImage(zupa,800,110,100,100,null);
 
     }
 
