@@ -14,7 +14,8 @@ public class OknoGry extends JPanel implements Runnable {
     Thread thread;
     //KeyHandler keyHandler = new KeyHandler();
     Postac postac;
-    BufferedImage tlo, platform1, platform2, platform3, platform4, platform5, menu, ksiazka;
+    BufferedImage tlo, platform1, platform2, platform3, platform4, platform5, menu, ksiazka, menuKlik, ksiazkaKlik;
+    static boolean slownikWybrany;
     Slownik slownik;
     JPanel jPanel;
     //static public Rectangle rect;
@@ -24,19 +25,23 @@ public class OknoGry extends JPanel implements Runnable {
         Color color = new Color(177,162,202);
         this.setBackground(color);
         this.setDoubleBuffered(true);
-        addKeyListener(new KeyHandler()); //dodaje KeyListener do panela - obiekt klasy KeyHandler
+        //addKeyListener(new KeyHandler()); //dodaje KeyListener do panela - obiekt klasy KeyHandler
         //setFocusable(true);
         this.requestFocus();
         getImg();
         setLayout(null);
         ImageIcon przyciskMenu = new ImageIcon(menu);
         ImageIcon przyciskSlownik = new ImageIcon(ksiazka);
-        JButton menuBtn = new JButton(przyciskMenu);
+        ImageIcon przyciskMenuKlik = new ImageIcon(menu);
+        ImageIcon przyciskSlownikKlik = new ImageIcon(ksiazka);
+        JButton menuBtn = new JButton();
+        menuBtn.setIcon(przyciskMenuKlik);
         menuBtn.setBackground(color);
-        JButton slownikBtn = new JButton(przyciskSlownik);
+        JButton slownikBtn = new JButton(przyciskSlownikKlik);
         slownikBtn.setBackground(color);
         menuBtn.setBounds(20,2,140,47);
-        slownikBtn.setBounds(170,0,60,50);
+        slownikBtn.setBounds(170,0,50,50);
+        slownikBtn.setFocusable(false);
         this.add(menuBtn/*,BorderLayout.NORTH*/);
         this.add(slownikBtn/*,BorderLayout.NORTH*/);
         //jPanel = new JPanel();
@@ -44,12 +49,14 @@ public class OknoGry extends JPanel implements Runnable {
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         menuBtn.setCursor(cursor);
         slownikBtn.setCursor(cursor);
-
-        slownikBtn.addMouseListener(new MouseAdapter(){
+        slownikBtn.setFocusable(false);
+        menuBtn.setFocusable(false);
+        /*slownikBtn.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 slownik = new Slownik(1);
+                slownikBtn.setFocusable(false);
             }
-        });
+        });*/
 
 
         JLabel punkty = new JLabel("WYNIK/SCORE : 0/5");
@@ -69,8 +76,9 @@ public class OknoGry extends JPanel implements Runnable {
             tlo = ImageIO.read(getClass().getResourceAsStream("/resources/tlo_gra.jpg"));
             platform1 = ImageIO.read(getClass().getResourceAsStream("/resources/platform.png"));
             menu = ImageIO.read(getClass().getResourceAsStream("/resources/menu.bmp"));
-
+            menuKlik = ImageIO.read(getClass().getResourceAsStream("/resources/menu_klik.bmp"));
             ksiazka = ImageIO.read(getClass().getResourceAsStream("/resources/ksiazka2.bmp"));
+            ksiazkaKlik = ImageIO.read(getClass().getResourceAsStream("/resources/ksiazka2_klik.bmp"));
             platform2 = platform1; platform3 = platform1; platform4 = platform1; platform5 = platform1;
         } catch (IOException e) {
             e.printStackTrace();
@@ -107,15 +115,32 @@ public class OknoGry extends JPanel implements Runnable {
     }
     public void update() {
         postac.update();
-        if(slownik !=null) {
-            
-            if (slownik.widoczny) {
-                System.out.println("WIDOCZNYY");
-            } else System.out.println("NIE WIDOCZNY");
+        if (slownik !=null) {
+            slownik.update();
+            if (!slownik.isVisible()) {
+                System.out.println("Slownik niewidocznyyy");
+                Main.okno.remove(slownik);
+                Main.okno.focus();
+                this.requestFocus();
+
+            }
         }
-        //rect = new Rectangle(Postac.x,Postac.y+5,100,88);
+        if (slownikWybrany) {
+            pokazSlownik();
+        }
+
 
     }
+
+
+    public void pokazSlownik () {
+        Slownik.powrotDoGry = false;
+        slownik = new Slownik(1);
+        Main.okno.add(slownik);
+        slownik.setVisible(true);
+        this.setVisible(false);
+    }
+
     public void paintComponent(Graphics  g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;

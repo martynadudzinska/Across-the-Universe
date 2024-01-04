@@ -19,6 +19,7 @@ public class ListaPoziomów extends JPanel {
     Color color1;
     Color color2;
     Color color3;
+    static Poziom1 poziom1;
     ListaPoziomów (boolean z1, boolean z2, boolean z3) {
 
         setSize(1000, 600);
@@ -38,7 +39,7 @@ public class ListaPoziomów extends JPanel {
             public void mousePressed(MouseEvent me){
                 setVisible(false);
                 //OknoGry oknogry = new OknoGry();
-                Poziom1 poziom1 = new Poziom1();
+                poziom1 = new Poziom1();
                 Main.okno.add(poziom1);
                 poziom1.setVisible(true);
                 poziom1.startThread();

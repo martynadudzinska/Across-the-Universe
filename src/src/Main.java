@@ -1,11 +1,21 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
+import java.awt.event.*;
+/*import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;*/
+//import java.awt.Desktop.Action;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 class Okno extends JFrame implements KeyListener {
+
+//zmienic buttony w key - dzis
+//dodać okno menu z funkcjami - dzis
+//dodac obsluge zetkniecia z obiektami i okno wpisywania nazwy
+//dodać nowe poziomy - dzis
+//dodać zczytywanie z pliku informacji o poziomach
+// muzyka xd
 
     Okno () {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -17,6 +27,14 @@ class Okno extends JFrame implements KeyListener {
         setVisible(true);
         setFocusable(true);
         this.addKeyListener(this);
+
+    }
+
+    public void focus () {
+        //System.out.println("FOKUS DZIALA");
+        setFocusable(true);
+        this.addKeyListener(this);
+        this.requestFocus();
     }
     @Override
     public void keyTyped(KeyEvent e) {
@@ -35,8 +53,12 @@ class Okno extends JFrame implements KeyListener {
         if (klawisz == KeyEvent.VK_W) {
             Postac.wGore = true;
         }
+
         if (klawisz == KeyEvent.VK_S) {
-            Postac.wDol = true;
+            OknoGry.slownikWybrany = true;
+        }
+        if (klawisz == KeyEvent.VK_P) {
+            Slownik.powrotDoGry = true;
         }
     }
 
@@ -54,8 +76,8 @@ class Okno extends JFrame implements KeyListener {
         if (klawisz == KeyEvent.VK_W) {
             Postac.wGore = false;
         }
-        if (klawisz == KeyEvent.VK_S) {
-            Postac.wDol = false;
+        if (klawisz == KeyEvent.VK_P) {
+            Slownik.powrotDoGry = false;
         }
     }
 }

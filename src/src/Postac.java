@@ -57,7 +57,7 @@ public class Postac  {
             if(kierunek) {
                 imagePostac=postacImg1;
             }else imagePostac = postacImg2;
-            System.out.println(gornaGranica);
+            //System.out.println(gornaGranica);
         }
         else if (((y>gornaGranica-3)&(y<gornaGranica+1)) || (y<=46) ||(kolizja.kolizjaGora()) || ((!wGore)&(!kolizja.kolizjaDol()))){
             spadanie = true; //musi chwile postac na bloczku znim kolejny skok
@@ -94,7 +94,7 @@ public class Postac  {
         }
         }
 
-        System.out.println(x +"  " +y);
+       /* System.out.println(x +"  " +y);*/
         }
 
 
