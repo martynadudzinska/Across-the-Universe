@@ -15,8 +15,10 @@ public class OknoGry extends JPanel implements Runnable {
     //KeyHandler keyHandler = new KeyHandler();
     Postac postac;
     BufferedImage tlo, platform1, platform2, platform3, platform4, platform5, menu, ksiazka, menuKlik, ksiazkaKlik;
-    static boolean slownikWybrany;
+    static boolean slownikWlaczony;
     Slownik slownik;
+    JButton menuBtn;
+    JButton slownikBtn;
     JPanel jPanel;
     //static public Rectangle rect;
     public OknoGry () {
@@ -34,16 +36,16 @@ public class OknoGry extends JPanel implements Runnable {
         ImageIcon przyciskSlownik = new ImageIcon(ksiazka);
         ImageIcon przyciskMenuKlik = new ImageIcon(menu);
         ImageIcon przyciskSlownikKlik = new ImageIcon(ksiazka);
-        JButton menuBtn = new JButton();
+        menuBtn = new JButton();
         menuBtn.setIcon(przyciskMenuKlik);
         menuBtn.setBackground(color);
-        JButton slownikBtn = new JButton(przyciskSlownikKlik);
+        slownikBtn = new JButton(przyciskSlownikKlik);
         slownikBtn.setBackground(color);
         menuBtn.setBounds(20,2,140,47);
         slownikBtn.setBounds(170,0,50,50);
         slownikBtn.setFocusable(false);
-        this.add(menuBtn/*,BorderLayout.NORTH*/);
-        this.add(slownikBtn/*,BorderLayout.NORTH*/);
+        this.add(menuBtn);
+        this.add(slownikBtn);
         //jPanel = new JPanel();
         //this.add(jPanel, BorderLayout.SOUTH);
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
@@ -51,12 +53,12 @@ public class OknoGry extends JPanel implements Runnable {
         slownikBtn.setCursor(cursor);
         slownikBtn.setFocusable(false);
         menuBtn.setFocusable(false);
-        /*slownikBtn.addMouseListener(new MouseAdapter(){
+        slownikBtn.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
-                slownik = new Slownik(1);
-                slownikBtn.setFocusable(false);
+                System.out.println("S");
+                pokazSlownik();
             }
-        });*/
+        });
 
 
         JLabel punkty = new JLabel("WYNIK/SCORE : 0/5");
@@ -115,30 +117,35 @@ public class OknoGry extends JPanel implements Runnable {
     }
     public void update() {
         postac.update();
-        if (slownik !=null) {
-            slownik.update();
-            if (!slownik.isVisible()) {
-                System.out.println("Slownik niewidocznyyy");
-                Main.okno.remove(slownik);
-                Main.okno.focus();
-                this.requestFocus();
 
-            }
+        if (Slownik.powrotDoGry) {
+            ukryjSlownik();
         }
-        if (slownikWybrany) {
-            pokazSlownik();
-        }
+
+               // Main.okno.remove(slownik);
+                //Main.okno.focus();
+                //this.requestFocus();
+
+
 
 
     }
 
 
     public void pokazSlownik () {
-        Slownik.powrotDoGry = false;
+
         slownik = new Slownik(1);
         Main.okno.add(slownik);
         slownik.setVisible(true);
         this.setVisible(false);
+        slownikWlaczony = true;
+        slownikBtn.setFocusable(false);
+    }
+
+    public void ukryjSlownik() {
+        slownik.setVisible(false);
+        slownik = null;
+        Slownik.powrotDoGry = false;
     }
 
     public void paintComponent(Graphics  g) {
@@ -151,8 +158,6 @@ public class OknoGry extends JPanel implements Runnable {
         g2.drawImage(platform3,300,300,200,25,null);
         g2.drawImage(platform4,600,400,200,25,null);
         g2.drawImage(platform5,800,200,200,25,null);
-        //g2.drawRect(rect.x, rect.y, rect.width, rect.height);
-        //g2.drawImage(ksiazka,170,0, 60, 50,null);
-        //g2.dispose();
+
     }
 }

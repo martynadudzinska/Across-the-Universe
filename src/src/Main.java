@@ -30,12 +30,6 @@ class Okno extends JFrame implements KeyListener {
 
     }
 
-    public void focus () {
-        //System.out.println("FOKUS DZIALA");
-        setFocusable(true);
-        this.addKeyListener(this);
-        this.requestFocus();
-    }
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -44,22 +38,21 @@ class Okno extends JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int klawisz = e.getKeyCode();
-        if (klawisz == KeyEvent.VK_A) {
-            Postac.wLewo = true;
-        }
-        if (klawisz == KeyEvent.VK_D) {
-            Postac.wPrawo = true;
-        }
-        if (klawisz == KeyEvent.VK_W) {
-            Postac.wGore = true;
+        if (!OknoGry.slownikWlaczony) {
+            if (klawisz == KeyEvent.VK_A) {
+                Postac.wLewo = true;
+                System.out.println("A");
+            }
+            if (klawisz == KeyEvent.VK_D) {
+                Postac.wPrawo = true;
+                System.out.println("D");
+            }
+            if (klawisz == KeyEvent.VK_W) {
+                Postac.wGore = true;
+                System.out.println("W");
+            }
         }
 
-        if (klawisz == KeyEvent.VK_S) {
-            OknoGry.slownikWybrany = true;
-        }
-        if (klawisz == KeyEvent.VK_P) {
-            Slownik.powrotDoGry = true;
-        }
     }
 
     @Override
@@ -76,9 +69,7 @@ class Okno extends JFrame implements KeyListener {
         if (klawisz == KeyEvent.VK_W) {
             Postac.wGore = false;
         }
-        if (klawisz == KeyEvent.VK_P) {
-            Slownik.powrotDoGry = false;
-        }
+
     }
 }
 public class Main {
@@ -92,16 +83,6 @@ public class Main {
        okno.add(oknoStartowe);
        okno.setVisible(true);
 
-
-
-        /*OknoGry oknoGry = new OknoGry();
-        okno.add(oknoGry);
-        okno.pack();*/
-
-       //okno.setLocationRelativeTo(null);
-       //okno.setVisible(true);
-
-       //oknoGry.startThread();
 
         }
     }
