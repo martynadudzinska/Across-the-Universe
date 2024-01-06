@@ -1,8 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -40,9 +38,9 @@ public class OknoStartowe extends JPanel {
         start.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 setVisible(false);
-                ListaPoziomów listaPoziomów = new ListaPoziomów(false,false,false);
-                Main.okno.add(listaPoziomów);
-                listaPoziomów.setVisible(true);
+                ListaPoziomow listaPoziomow = new ListaPoziomow(false,false,false);
+                Main.okno.add(listaPoziomow);
+                listaPoziomow.setVisible(true);
             }
         });
 

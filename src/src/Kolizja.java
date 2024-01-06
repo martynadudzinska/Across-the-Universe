@@ -14,9 +14,9 @@ public class Kolizja {
         if (ktoryPoziom ==1) {
             //jesli falsz to pojdzie w dol
             czyKolizjaDol = Postac.y > 498
-                    || ((Postac.y == 360) & (Postac.x >= 0 & Postac.x < 200))
+                    || ((Postac.y == 360) & (Postac.x >= 0 & Postac.x < 188))
                     || ((Postac.y == 60) & (Postac.x >= 0 & Postac.x < 200))
-                    || ((Postac.y == 208) & (Postac.x >= 256 & Postac.x <= 480))
+                    || ((Postac.y == 208) & (Postac.x >= 248 & Postac.x <= 480))
                     || ((Postac.y == 308) & (Postac.x >= 530 & Postac.x < 780))
                     || ((Postac.y == 108) & (Postac.x >= 720 & Postac.x <= 888));
 

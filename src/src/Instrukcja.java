@@ -1,3 +1,4 @@
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -6,24 +7,22 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Slownik extends JPanel {
-
+public class Instrukcja extends JPanel {
     Color color, color2;
     Cursor cursor;
-    int ktoryPoziom;
+    int ty = 160;
     JButton button;
-    static public boolean powrotDoGry;
+    static public boolean powrotDoMenu;
     BufferedImage flowerPink ,logoSlownik;
     JLabel slownik;
 
-
-    Slownik (int ktoryPoziom) {
+    Instrukcja () {
 
         getImg();
-        powrotDoGry = false;
+        powrotDoMenu = false;
         setSize(1000, 600);
         this.setDoubleBuffered(true);
-        this.ktoryPoziom = ktoryPoziom;
+
         //setPreferredSize(new Dimension(300,400));
         color = new Color(177,162,202);
         color2 = new Color(136,77,255);
@@ -42,11 +41,10 @@ public class Slownik extends JPanel {
         add(button);
         button.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
-                System.out.println("POWROT DO GRYYYY");
-                powrotDoGry = true;
-                OknoGry.slownikWlaczony = false;
-                ListaPoziomow.poziom1.setVisible(true);
-                System.out.println("P");
+               // System.out.println("POWROT DO MENU");
+                powrotDoMenu = true;
+                Menu.instrukcjaWlaczona = false; //
+                OknoGry.menu.setVisible(true);
                 button.setVisible(false);
                 //button.setFocusable(false);
 
@@ -55,39 +53,36 @@ public class Slownik extends JPanel {
         setLayout(null);
         setVisible(true);
 
-        JLabel ananas =  new JLabel("ananas      -       pineapple"); //JLabel pineapple = new JLabel("pineapple");
-        JLabel majonez = new JLabel("majonez    -       mayonnaise"); //JLabel mayonnaise = new JLabel("mayonnaise");
-        JLabel lizak =   new JLabel("lizak            -        lollipop"); //JLabel lollipop = new JLabel("lollipop");
-        JLabel pizza =   new JLabel("pizza           -         pizza"); //JLabel pizza1 = new JLabel("pizza");
-        JLabel zupa =    new JLabel("zupa           -          soup"); //JLabel soup = new JLabel("soup");
-
-        slownik =    new JLabel("S Ł O W N I K");
+        JLabel t1 =  new JLabel("Postacią należy poruszać klawiszami 'W' , 'A' , 'D'. Podczas");
+        JLabel t2 = new JLabel("wchodzenia na elementy pojawia się okno tekstowe. Gracz musi");
+        JLabel t3 =   new JLabel("wpisać w nim poprawną nazwę angielską aktualnie wybranego");
+        JLabel t4 =   new JLabel("elementu i zatwierdzić. Gdy gracz zbierze wszystkie elementy,");
+        JLabel t5 =    new JLabel("pojawi się portal prowadzący do następnego poziomu. W");
+        JLabel t6 =   new JLabel("przypadku błędnego wpisania, zawsze istnieje możliwość");
+        JLabel t7 =    new JLabel("ponowienia próby. Pomocą w trakcie gry służy słownik ");
+        JLabel t8 =    new JLabel("zamieszczony w lewym górnym rogu. ");
+        slownik =    new JLabel("I N S T R U K C J A");
         slownik.setFont(new Font("Helvetica", Font.BOLD, 45));
-        slownik.setBounds(355, 50, 300, 100);
-        add(slownik);
+        slownik.setBounds(300, 50, 500, 100);
+        t1.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t1.setBounds(265, ty, 480, 20);
+        t2.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t2.setBounds(265, ty+30, 480, 20);
+        t3.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t3.setBounds(265, ty+60, 480, 20);
+        t4.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t4.setBounds(265, ty+90, 480, 20);
+        t5.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t5.setBounds(265, ty+120, 480, 20);
+        t6.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t6.setBounds(265, ty+150, 480, 20);
+        t7.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t7.setBounds(265, ty+180, 480, 20);
+        t8.setFont(new Font("Helvetica", Font.BOLD, 15));
+        t8.setBounds(265, ty+210, 480, 20);
+        add(slownik); add(t1); add(t2); add(t3); add(t4); add(t5);add(t6); add(t7); add(t8);
 
-        if (this.ktoryPoziom ==1) {
-            ananas.setFont(new Font("Helvetica", Font.BOLD, 15));
-            ananas.setBounds(400, 230, 250, 20);
-            add(ananas);
 
-            majonez.setFont(new Font("Helvetica", Font.BOLD, 15));
-            majonez.setBounds(400, 260, 250, 20);
-            add(majonez);
-
-            lizak.setFont(new Font("Helvetica", Font.BOLD, 15));
-            lizak.setBounds(400, 290, 250, 20);
-            add(lizak);
-
-            pizza.setFont(new Font("Helvetica", Font.BOLD, 15));
-            pizza.setBounds(400, 320, 250, 20);
-            add(pizza);
-
-            zupa.setFont(new Font("Helvetica", Font.BOLD, 15));
-            zupa.setBounds(400, 350, 250, 20);
-            add(zupa);
-
-        }
     }
     public void getImg () {
         try {
@@ -111,7 +106,7 @@ public class Slownik extends JPanel {
         g2.setColor(color2);
         BasicStroke grubaLinia = new BasicStroke(4.0f);
         g2.setStroke(grubaLinia);
-        g2.drawRect(350, 200,300,200);
+        g2.drawRect(250, 150,500,250);
         g2.drawRect(425,440,150,70);
     }
 

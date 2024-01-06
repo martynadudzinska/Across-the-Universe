@@ -10,7 +10,7 @@ import java.io.IOException;
 
 class Okno extends JFrame implements KeyListener {
 
-//zmienic buttony w key - dzis
+//zmienic buttony w key - dzis         - zrobione
 //dodać okno menu z funkcjami - dzis
 //dodac obsluge zetkniecia z obiektami i okno wpisywania nazwy
 //dodać nowe poziomy - dzis
@@ -38,18 +38,21 @@ class Okno extends JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int klawisz = e.getKeyCode();
-        if (!OknoGry.slownikWlaczony) {
+        if (!(OknoGry.slownikWlaczony || OknoGry.menuWlaczone || OknoGry.sprawdzanie)) {
             if (klawisz == KeyEvent.VK_A) {
                 Postac.wLewo = true;
-                System.out.println("A");
+                OknoGry.czyWRuchu = true;
+                //System.out.println("A");
             }
             if (klawisz == KeyEvent.VK_D) {
                 Postac.wPrawo = true;
-                System.out.println("D");
+                OknoGry.czyWRuchu = true;
+                //System.out.println("D");
             }
             if (klawisz == KeyEvent.VK_W) {
                 Postac.wGore = true;
-                System.out.println("W");
+                OknoGry.czyWRuchu = true;
+                //System.out.println("W");
             }
         }
 
