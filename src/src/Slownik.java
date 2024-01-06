@@ -45,7 +45,9 @@ public class Slownik extends JPanel {
                 System.out.println("POWROT DO GRYYYY");
                 powrotDoGry = true;
                 OknoGry.slownikWlaczony = false;
-                ListaPoziomow.poziom1.setVisible(true);
+                if(Postac.ktoryPoziom==1) ListaPoziomow.poziom1.setVisible(true);
+                else if (Postac.ktoryPoziom ==2) ListaPoziomow.poziom2.setVisible(true);
+                else if (Postac.ktoryPoziom ==3) ListaPoziomow.poziom3.setVisible(true);
                 System.out.println("P");
                 button.setVisible(false);
                 //button.setFocusable(false);
@@ -55,11 +57,23 @@ public class Slownik extends JPanel {
         setLayout(null);
         setVisible(true);
 
-        JLabel ananas =  new JLabel("ananas      -       pineapple"); //JLabel pineapple = new JLabel("pineapple");
-        JLabel majonez = new JLabel("majonez    -       mayonnaise"); //JLabel mayonnaise = new JLabel("mayonnaise");
-        JLabel lizak =   new JLabel("lizak            -        lollipop"); //JLabel lollipop = new JLabel("lollipop");
-        JLabel pizza =   new JLabel("pizza           -         pizza"); //JLabel pizza1 = new JLabel("pizza");
-        JLabel zupa =    new JLabel("zupa           -          soup"); //JLabel soup = new JLabel("soup");
+        JLabel ananas =  new JLabel("ananas      -       pineapple");
+        JLabel majonez = new JLabel("majonez    -       mayonnaise");
+        JLabel lizak =   new JLabel("lizak            -        lollipop");
+        JLabel pizza =   new JLabel("pizza           -         pizza");
+        JLabel zupa =    new JLabel("zupa           -          soup");
+
+        JLabel slimak =  new JLabel("ślimak      -       snail");
+        JLabel meduza = new JLabel("meduza    -       jellyfish");
+        JLabel papuga =   new JLabel("papuga     -        parrot");
+        JLabel konikMorski =   new JLabel("konik morski   -   seahorse");
+        JLabel malpa =    new JLabel("małpa         -          monkey");
+
+        JLabel banknot =  new JLabel("pieniądze      -       money");
+        JLabel olowek = new JLabel("ołówek    -       pencil");
+        JLabel okulary =   new JLabel("okulary     -        glasses");
+        JLabel prezent =   new JLabel("prezent   -   gift");
+        JLabel gitara =    new JLabel("gitara         -          guitar");
 
         slownik =    new JLabel("S Ł O W N I K");
         slownik.setFont(new Font("Helvetica", Font.BOLD, 45));
@@ -88,15 +102,54 @@ public class Slownik extends JPanel {
             add(zupa);
 
         }
+        else if (this.ktoryPoziom ==2) {
+            slimak.setFont(new Font("Helvetica", Font.BOLD, 15));
+            slimak.setBounds(400, 230, 250, 20);
+            add(slimak);
+
+            meduza.setFont(new Font("Helvetica", Font.BOLD, 15));
+            meduza.setBounds(400, 260, 250, 20);
+            add(meduza);
+
+            papuga.setFont(new Font("Helvetica", Font.BOLD, 15));
+            papuga.setBounds(400, 290, 250, 20);
+            add(papuga);
+
+            konikMorski.setFont(new Font("Helvetica", Font.BOLD, 15));
+            konikMorski.setBounds(400, 320, 250, 20);
+            add(konikMorski);
+
+            malpa.setFont(new Font("Helvetica", Font.BOLD, 15));
+            malpa.setBounds(400, 350, 250, 20);
+            add(malpa);
+        }
+        else if (this.ktoryPoziom ==3) {
+            gitara.setFont(new Font("Helvetica", Font.BOLD, 15));
+            gitara.setBounds(400, 230, 250, 20);
+            add(gitara);
+
+            banknot.setFont(new Font("Helvetica", Font.BOLD, 15));
+            banknot.setBounds(400, 260, 250, 20);
+            add(banknot);
+
+            okulary.setFont(new Font("Helvetica", Font.BOLD, 15));
+            okulary.setBounds(400, 290, 250, 20);
+            add(okulary);
+
+            olowek.setFont(new Font("Helvetica", Font.BOLD, 15));
+            olowek.setBounds(400, 320, 250, 20);
+            add(olowek);
+
+            prezent.setFont(new Font("Helvetica", Font.BOLD, 15));
+            prezent.setBounds(400, 350, 250, 20);
+            add(prezent);
+        }
     }
     public void getImg () {
         try {
 
             flowerPink = ImageIO.read(getClass().getResourceAsStream("/resources/flowerPink.png"));
-            logoSlownik = ImageIO.read(getClass().getResourceAsStream("/resources/logo_slownik.png"));
-            // poz1 = ImageIO.read(getClass().getResourceAsStream("/resources/poz1.png"));
-            //poz2 = ImageIO.read(getClass().getResourceAsStream("/resources/poz2.png"));
-            //poz3 = ImageIO.read(getClass().getResourceAsStream("/resources/poz3.png"));
+
 
         } catch (IOException e) {
             e.printStackTrace();

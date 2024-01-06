@@ -32,21 +32,19 @@ public class OknoStartowe extends JPanel {
         start.setVisible(true);
         this.add(start);
 
-        this.addKeyListener(keyHandler); //dodaje KeyListener do panela - obiekt klasy KeyHandler
         this.setFocusable(true);
 
         start.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 setVisible(false);
-                ListaPoziomow listaPoziomow = new ListaPoziomow(false,false,false);
+                ListaPoziomow.poziom2Odblokowany = true;
+                ListaPoziomow.poziom3Odblokowany = true;
+                ListaPoziomow listaPoziomow = new ListaPoziomow();
                 Main.okno.add(listaPoziomow);
                 listaPoziomow.setVisible(true);
             }
         });
 
-
-        //start.setRolloverEnabled(true);
-        //this.setComponentZOrder(start, 0);
         setVisible(true);
 
     }
@@ -64,16 +62,11 @@ public class OknoStartowe extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(tlo,0,0,1000,650,null);
-        /*GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        this.add(start, gbc);*/
         g2.setColor(color);
         BasicStroke grubaLinia = new BasicStroke(4.0f);
         g2.setStroke(grubaLinia);
         g2.drawRect(425,350,150,70);
-        //g2.dispose();
+
 
     }
 

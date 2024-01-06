@@ -88,10 +88,7 @@ public class Instrukcja extends JPanel {
         try {
 
             flowerPink = ImageIO.read(getClass().getResourceAsStream("/resources/flowerPink.png"));
-            logoSlownik = ImageIO.read(getClass().getResourceAsStream("/resources/logo_slownik.png"));
-            // poz1 = ImageIO.read(getClass().getResourceAsStream("/resources/poz1.png"));
-            //poz2 = ImageIO.read(getClass().getResourceAsStream("/resources/poz2.png"));
-            //poz3 = ImageIO.read(getClass().getResourceAsStream("/resources/poz3.png"));
+
 
         } catch (IOException e) {
             e.printStackTrace();

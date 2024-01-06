@@ -25,13 +25,15 @@ public class Postac  {
     boolean spadanie;
     boolean kierunek; //prawo -prawda, lewo-falsz
     public static boolean ananasWidoczny, lizakWidoczny, majonezWidoczny, pizzaWidoczna, zupaWidoczna;
+    public static boolean slimakWidoczny, meduzaWidoczna, konikMorskiWidoczny, malpaWidoczna, papugaWidoczna;
+    public static boolean banknotWidoczny, gitaraWidoczna, okularyWidoczne, olowekWidoczny, prezentWidocznu;
 
     public Postac (OknoGry oknoGry) {
         this.oknoGry=oknoGry;
-
+        ktoryPoziom = oknoGry.ktoryPoziom;
         getPostacImg();
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-        ktoryPoziom = 1;
+
         kolizja = new Kolizja(ktoryPoziom);
         zbieranie = new Zbieranie(ktoryPoziom);
         licznikZebranych =0;
@@ -53,7 +55,6 @@ public class Postac  {
     }
     public void update() { //z kazdym uderzeniem thread sie robi
 
-
         if(kolizja.kolizjaDol()){
             czySkok = false;
             gornaGranica = y-200;
@@ -64,7 +65,7 @@ public class Postac  {
             //System.out.println(gornaGranica);
         }
         else if (((y>gornaGranica-3)&(y<gornaGranica+1)) || (y<=46) ||(kolizja.kolizjaGora()) || ((!wGore)&(!kolizja.kolizjaDol()))){
-            spadanie = true; //musi chwile postac na bloczku znim kolejny skok
+            spadanie = true;
 
         }
         if (spadanie) {
@@ -106,16 +107,27 @@ public class Postac  {
         }
         }
         if (ktoryPoziom==1) {
-            //System.out.println("zetkniecie= "+zbieranie.zetkniecie);
-            if (zbieranie.zbieranie() ==1 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="ananas"; } //Poziom1.ananasWidoczny =false; licznikZebranych++;
+            if (zbieranie.zbieranie() ==1 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="ananas"; }
             else if (zbieranie.zbieranie() ==2 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="majonez";}
             else if (zbieranie.zbieranie() ==3 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="lizak";}
             else if (zbieranie.zbieranie() ==4 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="pizza";}
             else if (zbieranie.zbieranie() ==5 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="zupa";}
-
+        } else if (ktoryPoziom==2) {
+            if (zbieranie.zbieranie() ==1 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="ślimak"; }
+            else if (zbieranie.zbieranie() ==2 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="meduza";}
+            else if (zbieranie.zbieranie() ==3 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="konik morski";}
+            else if (zbieranie.zbieranie() ==4 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="papuga";}
+            else if (zbieranie.zbieranie() ==5 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="małpa";}
+        }
+        else if (ktoryPoziom==3) {
+            if (zbieranie.zbieranie() ==1 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="pieniądze"; }
+            else if (zbieranie.zbieranie() ==2 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="ołówek";}
+            else if (zbieranie.zbieranie() ==3 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="okulary";}
+            else if (zbieranie.zbieranie() ==4 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="prezent";}
+            else if (zbieranie.zbieranie() ==5 ) {OknoGry.sprawdzanie=true; OknoGry.jakieSlowko ="gitara";}
         }
         //zbieranie.zbieranie();
-       //System.out.println(x +"  " +y);
+       System.out.println(x +"  " +y);
         } //koniec update
 
 

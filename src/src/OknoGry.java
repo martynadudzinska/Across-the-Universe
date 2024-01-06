@@ -32,20 +32,22 @@ public class OknoGry extends JPanel implements Runnable {
     static String jakieSlowko;
     String wpis;
     static boolean poprawnieWpisane;
-    int ktoryPoziom;
+    public int ktoryPoziom;
     static boolean czyWRuchu;
     boolean enterKlikniety;
     boolean rysujProstokat=false;
 
     public OknoGry () {
+        System.out.println("utworzylo sie okno gry");
+        ktoryPoziom = ListaPoziomow.ktoryPoziom;
         postac = new Postac(this);
+        //Postac.ktoryPoziom = ktoryPoziom;
         this.setPreferredSize(new Dimension(1000,600));
         Color color = new Color(177,162,202);
         color2 = new Color(136,77,255);
         color3 = new Color(212,88,88);
         this.setBackground(color);
         this.setDoubleBuffered(true);
-        ktoryPoziom = Postac.ktoryPoziom;
         //setFocusable(true);
         this.requestFocus();
         getImg();
@@ -159,6 +161,7 @@ public void sprawdzenieWiedzy(String jakieSlowko) {
                 if (wpis.equals("pineapple")) {
                     Poziom1.ananasWidoczny = false;
                     poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
                 } else {
                     poprawnieWpisane = false;
                     niepoprawnyWpis();
@@ -168,6 +171,7 @@ public void sprawdzenieWiedzy(String jakieSlowko) {
                 if (wpis.equals("mayonnaise")) {
                     Poziom1.majonezWidoczny = false;
                     poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
                 } else {
                     poprawnieWpisane = false;
                     niepoprawnyWpis();
@@ -177,6 +181,7 @@ public void sprawdzenieWiedzy(String jakieSlowko) {
                 if (wpis.equals("lollipop")) {
                     Poziom1.lizakWidoczny = false;
                     poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
                 } else {
                     poprawnieWpisane = false;
                     niepoprawnyWpis();
@@ -186,6 +191,7 @@ public void sprawdzenieWiedzy(String jakieSlowko) {
                 if (wpis.equals("pizza")) {
                     Poziom1.pizzaWidoczna = false;
                     poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
                 } else {
                     poprawnieWpisane = false;
                     niepoprawnyWpis();
@@ -195,6 +201,110 @@ public void sprawdzenieWiedzy(String jakieSlowko) {
                 if (wpis.equals("soup")) {
                     Poziom1.zupaWidoczna = false;
                     poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+        } else if (wpis != null & ktoryPoziom == 2) {
+            if (jakieSlowko.equals("ślimak")) {
+                if (wpis.equals("snail")) {
+                    Poziom2.slimakWidoczny = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("meduza")) {
+                if (wpis.equals("jellyfish")) {
+                    Poziom2.meduzaWidoczna = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("konik morski")) {
+                if (wpis.equals("seahorse")) {
+                    Poziom2.konikMorskiWidoczny = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("papuga")) {
+                if (wpis.equals("parrot")) {
+                    Poziom2.papugaWidoczna = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("małpa")) {
+                if (wpis.equals("monkey")) {
+                    Poziom2.malpaWidoczna = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+        }
+        else if (wpis != null & ktoryPoziom == 3) {
+            if (jakieSlowko.equals("pieniądze")) {
+                if (wpis.equals("money")) {
+                    Poziom3.banknotWidoczny = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("ołówek")) {
+                if (wpis.equals("pencil")) {
+                    Poziom3.olowekWidoczny = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("okulary")) {
+                if (wpis.equals("glasses")) {
+                    Poziom3.okularyWidoczne = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("prezent")) {
+                if (wpis.equals("gift")) {
+                    Poziom3.prezentWidocznu = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
+                } else {
+                    poprawnieWpisane = false;
+                    niepoprawnyWpis();
+                }
+            }
+            if (jakieSlowko.equals("gitara")) {
+                if (wpis.equals("guitar")) {
+                    Poziom3.gitaraWidoczna = false;
+                    poprawnieWpisane = true;
+                    Postac.licznikZebranych++;
                 } else {
                     poprawnieWpisane = false;
                     niepoprawnyWpis();
@@ -210,7 +320,8 @@ public void sprawdzenieWiedzy(String jakieSlowko) {
         textField.setFocusable(false);
         napis.setVisible(false);
         sprawdzanie = false;
-        Postac.licznikZebranych++;
+        Menu.poziomOdNowyWybrany = false;
+        //Postac.licznikZebranych++;
         poprawnieWpisane = false;
     }
 
@@ -248,7 +359,7 @@ public void niepoprawnyWpis () {
         Slownik.powrotDoGry = false;
     }
     private void pokazMenu() {
-        menu = new Menu(1);
+        menu = new Menu(ktoryPoziom);
         Main.okno.add(menu);
         menu.setVisible(true);
         this.setVisible(false);
@@ -266,11 +377,25 @@ public void niepoprawnyWpis () {
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(tlo,0,50,1000,600,null);
         g2.drawImage(Postac.imagePostac,Postac.x,Postac.y, 100, 100,null);
-        g2.drawImage(platform1,0,450,200,25,null);
-        g2.drawImage(platform2,30,150,200,25,null);
-        g2.drawImage(platform3,300,300,200,25,null);
-        g2.drawImage(platform4,600,400,200,25,null);
-        g2.drawImage(platform5,800,200,200,25,null);
+        if (ktoryPoziom ==1) {
+            g2.drawImage(platform1, 0, 450, 200, 25, null);
+            g2.drawImage(platform2, 30, 150, 200, 25, null);
+            g2.drawImage(platform3, 300, 300, 200, 25, null);
+            g2.drawImage(platform4, 600, 400, 200, 25, null);
+            g2.drawImage(platform5, 800, 200, 200, 25, null);
+        }else if (ktoryPoziom==2) {
+            g2.drawImage(platform1, 350, 450, 200, 25, null);
+            g2.drawImage(platform2, 300, 180, 200, 25, null);
+            g2.drawImage(platform3, 30, 300, 200, 25, null);
+            g2.drawImage(platform4, 800, 390, 200, 25, null);
+            g2.drawImage(platform5, 600, 260, 200, 25, null);
+        }else if (ktoryPoziom==3) {
+            g2.drawImage(platform1, 250, 320, 200, 25, null); //ok
+            g2.drawImage(platform2, 0, 190, 200, 25, null);
+            g2.drawImage(platform3, 600, 450, 200, 25, null); //ok
+            g2.drawImage(platform4, 780, 300, 200, 25, null);
+            g2.drawImage(platform5, 500, 170, 200, 25, null);
+        }
         g2.setColor(color2);
         BasicStroke grubaLinia = new BasicStroke(4.0f);
         g2.setStroke(grubaLinia);

@@ -62,7 +62,9 @@ public class Menu extends JPanel implements Runnable {
                 //System.out.println("POWROT DO GRYYYY");
                 powrotDoGry = true;
                 OknoGry.menuWlaczone = false;
-                ListaPoziomow.poziom1.setVisible(true);
+                if(ktoryPoziom==1) ListaPoziomow.poziom1.setVisible(true);
+                else if (ktoryPoziom ==2) ListaPoziomow.poziom2.setVisible(true);
+                else if (ktoryPoziom ==3) ListaPoziomow.poziom3.setVisible(true);
                 System.out.println("P");
                 btnPowrot.setVisible(false);
                 //button.setFocusable(false);
@@ -73,15 +75,35 @@ public class Menu extends JPanel implements Runnable {
             public void mousePressed(MouseEvent me) {
                 powrotDoGry = true;
                 OknoGry.menuWlaczone = false;
-                ListaPoziomow.poziom1.setVisible(true);
                 System.out.println("P");
                 btnPowrot.setVisible(false);
                 Postac.x =100; Postac.y = 500;
-                Poziom1.ananasWidoczny = true; Poziom1.majonezWidoczny = true; Poziom1.lizakWidoczny = true;
-                Poziom1.pizzaWidoczna = true; Poziom1.zupaWidoczna=true;
+                if(ktoryPoziom==1) {
+                    ListaPoziomow.poziom1.setVisible(true);
+                    Poziom1.ananasWidoczny = true;
+                    Poziom1.majonezWidoczny = true;
+                    Poziom1.lizakWidoczny = true;
+                    Poziom1.pizzaWidoczna = true;
+                    Poziom1.zupaWidoczna = true;
+                }else if (ktoryPoziom ==2){
+                    ListaPoziomow.poziom2.setVisible(true);
+                    Poziom2.slimakWidoczny = true;
+                    Poziom2.papugaWidoczna = true;
+                    Poziom2.meduzaWidoczna = true;
+                    Poziom2.malpaWidoczna = true;
+                    Poziom2.konikMorskiWidoczny = true;
+                }
+                else if (ktoryPoziom ==3){
+                    ListaPoziomow.poziom3.setVisible(true);
+                    Poziom3.banknotWidoczny = true;
+                    Poziom3.okularyWidoczne = true;
+                    Poziom3.olowekWidoczny = true;
+                    Poziom3.prezentWidocznu = true;
+                    Poziom3.gitaraWidoczna = true;
+                }
                 poziomOdNowyWybrany = true;
                 OknoGry.poprawnieWpisane = true;
-                if (Postac.licznikZebranych >0) Postac.licznikZebranych = -1;
+                if (Postac.licznikZebranych >0) Postac.licznikZebranych = 0;
                 //button.setFocusable(false);
 
             }

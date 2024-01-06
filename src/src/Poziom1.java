@@ -9,8 +9,8 @@ public class Poziom1 extends OknoGry {
     public static boolean ananasWidoczny, lizakWidoczny, majonezWidoczny, pizzaWidoczna, zupaWidoczna;
 
     Poziom1 () {
-
-        Postac.ktoryPoziom = 1;
+        System.out.println("utworzyl sie poziom 1");
+        ktoryPoziom = 1;
         getElementyImg();
         ananasWidoczny=true; lizakWidoczny = true; majonezWidoczny = true; pizzaWidoczna=true; zupaWidoczna=true;
     }

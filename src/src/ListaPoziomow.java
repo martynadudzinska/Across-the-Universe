@@ -8,20 +8,23 @@ import java.io.IOException;
 
 public class ListaPoziomow extends JPanel {
 
-    public boolean z1,z2,z3;
+
     JButton start1 = new JButton("POZIOM 1");
     JButton start2 = new JButton("POZIOM 2");
     JButton start3 = new JButton("POZIOM 3");
     BufferedImage poz1;
     BufferedImage poz2;
     BufferedImage poz3;
-    static boolean poziom2Odblokowany;
-    static boolean poziom3Odblokowany;
+    static public boolean poziom2Odblokowany;
+    static public boolean poziom3Odblokowany;
     BufferedImage tlo;
     Color color1;
     Color color2;
     static Poziom1 poziom1;
-    ListaPoziomow(boolean z1, boolean z2, boolean z3) {
+    static Poziom2 poziom2;
+    static Poziom3 poziom3;
+    static public int ktoryPoziom;
+    ListaPoziomow() {
 
         setSize(1000, 600);
         this.setDoubleBuffered(true);
@@ -39,26 +42,50 @@ public class ListaPoziomow extends JPanel {
             start2.setBackground(color1);
             start2.setCursor(cursor);
         } else {
-            //System.out.println("NIE");
+            System.out.println("2 NIE odblokowany");
             start2.setBackground(Color.lightGray);
         }
         if (poziom3Odblokowany) {
             start3.setBackground(color1);
             start3.setCursor(cursor);
         } else {
+            System.out.println("3 NIE odblokowany");
             start3.setBackground(Color.lightGray);
         }
-
         this.add(start1); this.add(start2); this.add(start3);
+
         start1.setVisible(true); start2.setVisible(true); start3.setVisible(true);
         start1.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 setVisible(false);
+                ktoryPoziom = 1;
                 //OknoGry oknogry = new OknoGry();
                 poziom1 = new Poziom1();
                 Main.okno.add(poziom1);
                 poziom1.setVisible(true);
                 poziom1.startThread();
+            }
+        });
+        start2.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                setVisible(false);
+                ktoryPoziom = 2;
+                //OknoGry oknogry = new OknoGry();
+                poziom2 = new Poziom2();
+                Main.okno.add(poziom2);
+                poziom2.setVisible(true);
+                poziom2.startThread();
+            }
+        });
+        start3.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                setVisible(false);
+                ktoryPoziom = 3;
+                //OknoGry oknogry = new OknoGry();
+                poziom3 = new Poziom3();
+                Main.okno.add(poziom3);
+                poziom3.setVisible(true);
+                poziom3.startThread();
             }
         });
         color2 = new Color(190,190,190);
