@@ -1,6 +1,6 @@
 # Across-the-Universe
 
-Java project for the Modern programming languages course (January 2024) - Spongebob platform game teaching English for children.
+Java project for the Modern programming languages course (January 2024) - Spongebob platform game teaching English for children. (Turn on the sound!)
 
 
 
